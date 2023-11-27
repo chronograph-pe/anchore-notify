@@ -149,6 +149,7 @@ def send_report(severity_counter):
 
 
 def main():
+    print("This is sarif data {}".format(SARIF_DATA))
     with open(SARIF_DATA, "r") as f:
         data = json.load(f)
     
