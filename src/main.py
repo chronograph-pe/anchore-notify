@@ -97,7 +97,6 @@ def create_job_summary():
     
     
 def send_report(severity_counter):
-    print("truncated slack token is {}".format(SLACK_TOKEN[:4]))
     client = WebClient(token=SLACK_TOKEN)
 
     try:
@@ -149,9 +148,11 @@ def send_report(severity_counter):
 
 
 def main():
-    print("This is sarif data {}".format(SARIF_DATA))
     with open(SARIF_DATA, "r") as f:
         data = json.load(f)
+        if not data:
+            print("No sarif data found")
+            exit(1)
     
     for run in data.get("runs"):
         results = run["results"]
