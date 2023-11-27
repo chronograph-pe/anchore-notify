@@ -1,5 +1,6 @@
 import json
 import os
+import hashlib
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
@@ -97,6 +98,8 @@ def create_job_summary():
     
     
 def send_report(severity_counter):
+    print("truncated slack token is {}".format(SLACK_TOKEN[:4]))
+    print("md5 of slack token is {}".format(hashlib.md5(SLACK_TOKEN)))
     client = WebClient(token=SLACK_TOKEN)
 
     try:
