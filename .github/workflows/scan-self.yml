@@ -16,6 +16,9 @@ jobs:
           image: "localbuild/anchore-notify:latest"
           fail-build: false # default is true
           # severity-cutoff: high # default is medium
+
+      - id: getGithubRunURL
+        run: 
       
       - name: anchore notify
         uses: ./ # Uses an action in the root directory
@@ -24,5 +27,5 @@ jobs:
           # severity_cutoff_num: optional, default is 8
           # slack_token: optional 
           # slack_channel: optional
-          github_run_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          github_run_url: "https://arunurl"
           report_name: "localbuild/anchore-notify:latest"
