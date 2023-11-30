@@ -26,3 +26,6 @@ jobs:
           # slack_channel: optional
           github_run_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           report_name: "localbuild/anchore-notify:latest"
+        
+      - name: create job summary
+        run: cat /github/workspace/job_summary.md >> $GITHUB_STEP_SUMMARY
