@@ -12,6 +12,11 @@ GITHUB_RUN_URL = os.getenv("GITHUB_RUN_URL")
 REPORT_NAME = os.getenv("REPORT_NAME")
 SLACK_CHANNEL = os.getenv("SLACK_CHANNEL")
 
+print("SARIF_DATA {}".format(SARIF_DATA))
+print("GITHUB_RUN_URL {}".format(GITHUB_RUN_URL))
+print("REPORT_NAME {}".format(REPORT_NAME))
+
+
 
 def generate_rule_dictionary(rules):
     # Creates a dictionary of anchore alerts (aka rules) and
