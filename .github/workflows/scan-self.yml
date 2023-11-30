@@ -16,6 +16,7 @@ jobs:
           image: "localbuild/anchore-notify:latest"
           fail-build: false # default is true
           # severity-cutoff: high # default is medium
+          output-format: "table"
       
       - name: anchore notify
         uses: ./ # Uses an action in the root directory

@@ -148,6 +148,11 @@ def send_report(severity_counter):
 
 
 def main():
+
+    if not(SARIF_DATA):
+        print("No sarif file found")
+        exit(1)
+
     with open(SARIF_DATA, "r") as f:
         data = json.load(f)
         if not data:
