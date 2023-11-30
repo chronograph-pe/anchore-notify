@@ -4,13 +4,13 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
 
-SARIF_DATA = os.getenv("sarif_data")
-PRINT_RESULTS = os.getenv("print_results", False)
-SEVERITY_CUTOFF_NUM = os.getenv("severity_cutoff_num")
-SLACK_TOKEN = os.getenv('slack_token')
-GITHUB_RUN_URL = os.getenv("github_run_url")
-REPORT_NAME = os.getenv("report_name")
-SLACK_CHANNEL = os.getenv("slack_channel")
+SARIF_DATA = os.getenv("SARIF_DATA")
+PRINT_RESULTS = os.getenv("PRINT_RESULTS", False)
+SEVERITY_CUTOFF_NUM = os.getenv("SEVERITY_CUTOFF_NUM")
+SLACK_TOKEN = os.getenv('SLACK_TOKEN')
+GITHUB_RUN_URL = os.getenv("GITHUB_RUN_URL")
+REPORT_NAME = os.getenv("REPORT_NAME")
+SLACK_CHANNEL = os.getenv("SLACK_CHANNEL")
 
 
 def generate_rule_dictionary(rules):
