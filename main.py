@@ -7,7 +7,7 @@ from slack_sdk.errors import SlackApiError
 SARIF_DATA = os.getenv("sarif_data")
 PRINT_RESULTS = os.getenv("print_results", False)
 SEVERITY_CUTOFF_NUM = os.getenv("severity_cutoff_num")
-SLACK_TOKEN = os.environ['slack_token']
+SLACK_TOKEN = os.getenv('slack_token')
 GITHUB_RUN_URL = os.getenv("github_run_url")
 REPORT_NAME = os.getenv("report_name")
 SLACK_CHANNEL = os.getenv("slack_channel")
