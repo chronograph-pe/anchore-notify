@@ -16,7 +16,7 @@ inputs:
     description: "A name for your report that will be included in the notifications"
     required: True
   github_run_url:
-    description: "You can use ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+    description: "The current workflow run URL to be used in notifications to view job summary"
     required: True
 runs:
   using: "docker"
