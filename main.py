@@ -149,6 +149,7 @@ def send_report(severity_counter):
 
 def main():
 
+    print("Sarif file in location {}".format(SARIF_DATA))
     if not(SARIF_DATA):
         print("No sarif file found")
         exit(1)
