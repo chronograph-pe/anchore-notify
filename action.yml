@@ -7,16 +7,16 @@ inputs:
     required: True
   severity_cutoff_num:
     description: "Anchore severity number threshold that will generate notifications"
-    required: False
     default: 8
   slack_token:
     description: "Your Slack bot token"
-    required: True
   slack_channel:
     description: "The Slack channel ID you want to send messages to"
-    required: True
   report_name:
     description: "A name for your report that will be included in the notifications"
+    required: True
+  github_run_url:
+    description: "You can use ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
     required: True
 runs:
   using: "docker"

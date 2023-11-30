@@ -4,13 +4,13 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
 
-SARIF_DATA = os.getenv("SARIF_DATA")
-PRINT_RESULTS = os.getenv("PRINT_RESULTS", False)
-SEVERITY_CUTOFF_NUM = os.getenv("SEVERITY_CUTOFF_NUM")
-SLACK_TOKEN = os.environ['SLACK_TOKEN']
-GITHUB_RUN_URL = os.getenv("GITHUB_RUN_URL")
-REPORT_NAME = os.getenv("REPORT_NAME")
-SLACK_CHANNEL = os.getenv("SLACK_CHANNEL")
+SARIF_DATA = os.getenv("sarif_data")
+PRINT_RESULTS = os.getenv("print_results", False)
+SEVERITY_CUTOFF_NUM = os.getenv("severity_cutoff_num")
+SLACK_TOKEN = os.environ['slack_token']
+GITHUB_RUN_URL = os.getenv("github_run_url")
+REPORT_NAME = os.getenv("report_name")
+SLACK_CHANNEL = os.getenv("slack_channel")
 
 
 def generate_rule_dictionary(rules):
@@ -161,7 +161,11 @@ def main():
     rule_dictionary = generate_rule_dictionary(rules)
     severity_counter = parse_results(results, rule_dictionary)
     create_job_summary()
-    send_report(severity_counter)
+    
+    if not SLACK_CHANNEL or not SLACK_TOKEN:
+        print("Slack channel and or token not set. Skipping slack notifications...")
+    else:
+        send_report(severity_counter)
 
     
 if __name__ == "__main__":
