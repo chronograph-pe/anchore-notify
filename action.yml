@@ -1,0 +1,23 @@
+name: "Anchore Notify"
+description: "Create Github job summaries and slack messages for Anchore scan results"
+author: "Rob Sitro"
+inputs:
+  sarif_data:
+    description: "Anchore SARIF data"
+    required: True
+  severity_cutoff_num:
+    description: "Anchore severity number threshold that will generate notifications"
+    default: 8
+  slack_token:
+    description: "Your Slack bot token"
+  slack_channel:
+    description: "The Slack channel ID you want to send messages to"
+  report_name:
+    description: "A name for your report that will be included in the notifications"
+    required: True
+  github_run_url:
+    description: "The current workflow run URL to be used in notifications to view job summary"
+    required: True
+runs:
+  using: "docker"
+  image: "Dockerfile"

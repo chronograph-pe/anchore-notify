@@ -1,0 +1,29 @@
+name: Anchore Self Scan
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: build container image
+        run: docker build . --file ./Dockerfile --tag localbuild/anchore-notify:latest
+
+      - uses: anchore/scan-action@v3
+        id: scan
+        with:
+          image: "localbuild/anchore-notify:latest"
+          fail-build: false # default is true
+          # severity-cutoff: high # default is medium
+      
+      - name: anchore notify
+        uses: ./ # Uses an action in the root directory
+        with:
+          sarif_data: ${{ steps.scan.outputs.sarif }}
+          # severity_cutoff_num: optional, default is 8
+          # slack_token: optional 
+          # slack_channel: optional
+          github_run_url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          report_name: "localbuild/anchore-notify:latest"
+      - run: cat ./job_summary.md >> $GITHUB_STEP_SUMMARY
