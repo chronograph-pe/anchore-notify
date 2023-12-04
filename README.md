@@ -1,6 +1,6 @@
 # anchore-notify Github Action
 
-Foobar is a Python library for dealing with word pluralization.
+A GitHub workflow that uses Anchore's[https://github.com/marketplace/actions/anchore-container-scan] local open-source container scanner to scan docker images. This workflow is able to build container images and analyze them, produce a comprehensive vulnerability report embedded within each workflow run as a job summary, and sends Slack notifications contingent on customizable severity thresholds.
 
 ## Usage
 
