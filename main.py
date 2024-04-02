@@ -154,8 +154,21 @@ def main():
         print("No sarif file found")
         exit(1)
 
+    with open(SARIF_DATA, 'r') as file:
+        # Read the content of the file
+        content = file.read()
+        # Print the content
+        print("######## debug ###########")
+        print(content)
+        print("######## debug ###########")
+
     with open(SARIF_DATA, "r") as f:
-        data = json.load(f)
+        try:
+            data = json.load(f)
+        except Exception as e:
+            print("Error importing sarif file -> {}".format(e))
+            exit(1)
+            
         if not data:
             print("No sarif data found")
             exit(1)
